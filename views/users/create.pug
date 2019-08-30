@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+	h1 Creat user
+	form.form-group(action="/users/create", method="POST")
+		label Name 
+		input.form-control(name="name",type="text", value=inputValues ? inputValues.name : "")
+		if nameErr
+			.alert.alert-danger= nameErr
+		label Phone
+		input.form-control(name="phone",type="text", value=inputValues ? inputValues.phone : "")
+		if phoneErr
+			.alert.alert-danger= phoneErr
+		button.btn.btn-primary.mt-3 Create

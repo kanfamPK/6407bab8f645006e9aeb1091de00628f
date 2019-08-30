@@ -1,0 +1,75 @@
+extends ../layouts/common.pug
+
+block content
+	h1.productHeader Products
+
+	.d-flex.flex-column.align-items-center
+		form.ml-auto(action="/products/search", method="GET")  
+				input(type="text", name="q", placeholder="",value= inputValue)
+				button.btn.btn-primary.ml-2 Search
+		nav(aria-label='Page navigation example')
+			if (page ==1)
+				ul.pagination
+					li.page-item
+						a.page-link.currentProductPage(href='/products?page='+(page)) #{page} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) #{page+1} 				
+					li.page-item
+						a.page-link(href='/products?page='+(page+2)) #{page+2} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) Next
+
+			if (page ==2)
+				ul.pagination
+					li.page-item
+						a.page-link(href='/products?page='+(page-1)) #{page-1} 
+					li.page-item
+						a.page-link.currentProductPage(href='/products?page='+(page)) #{page} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) #{page+1} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) Next
+
+			if (page >2 && page <limitPage-1)
+				ul.pagination
+					li.page-item
+						a.page-link(href='/products?page='+ (page-1)) Previous
+					li.page-item
+						a.page-link(href='/products?page='+(page-1)) #{page-1} 
+					li.page-item
+						a.page-link.currentProductPage(href='/products?page='+(page)) #{page} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) #{page+1} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) Next
+
+			if (page == limitPage-1)
+				ul.pagination
+					li.page-item
+						a.page-link(href='/products?page='+ (page-1)) Previous
+					li.page-item
+						a.page-link(href='/products?page='+(page-1)) #{page-1} 
+					li.page-item
+						a.page-link.currentProductPage(href='/products?page='+(page)) #{page} 
+					li.page-item
+						a.page-link(href='/products?page='+(page+1)) #{page+1} 
+
+			if (page == limitPage)
+				ul.pagination
+					li.page-item
+						a.page-link(href='/products?page='+(page-1)) Previous 
+					li.page-item
+						a.page-link(href='/products?page='+(page-1)) #{page-1} 
+					li.page-item
+						a.page-link.currentProductPage(href='/products?page='+(page)) #{page} 				
+
+	.row
+		each i,y in productsList
+			.col-sm-6.col-md-4.col-lg-3.ml-6.mb-3
+				.card
+					- var n = Math.floor(Math.random()*100);
+					img.card-img-top(src=i.image+n, alt='...')
+					.card-body
+						h5.card-title= (i.name+' '+ ( y+1+ 12*(page-1) )  ) 
+						p.card-text= i.description
+						a.btn.btn-primary(href='/cart/add/'+ i.id) Add to cart

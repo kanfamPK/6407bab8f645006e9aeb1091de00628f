@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+	h1 Login
+	form.form-group(action="/auth/login", method="POST")
+		label Email
+		input#email.form-control(name="email",type="text", value=inputValues ? inputValues.email : "")
+		if emailErr
+			.alert.alert-danger= emailErr
+		label Password
+		input#password.form-control(name="password",type="password", value=inputValues ? inputValues.password : "")
+		if passwordErr
+			.alert.alert-danger= passwordErr
+		button.btn.btn-primary.mt-3 Login
