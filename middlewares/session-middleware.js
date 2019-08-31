@@ -1,5 +1,5 @@
 var shortid = require('shortid');
-var db = require('../db.js');
+// var db = require('../db.js');
 var Session = require('../models/sessions-model.js');
 
 module.exports = function(req,res,next){

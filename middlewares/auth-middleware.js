@@ -1,4 +1,4 @@
-var db = require('../db.js');
+// var db = require('../db.js');
 var User = require('../models/user-model.js');
 module.exports.requireAuth = function(req, res, next){
 	// var user = await User.find({id: req.signedCookies.userId});
