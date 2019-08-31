@@ -5,7 +5,6 @@ var app = express();
 var port = 3000;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var db = require('./db.js');
 var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true });

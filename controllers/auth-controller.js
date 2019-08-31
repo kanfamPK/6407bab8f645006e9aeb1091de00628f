@@ -1,4 +1,4 @@
-var db = require('../db.js');
+// var db = require('../db.js');
 var shortid = require('shortid');
 var Users = require('../models/user-model.js');
 
