@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon --inspect index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,5 +19,8 @@
     "mongoose": "^5.6.11",
     "pug": "^2.0.4",
     "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
