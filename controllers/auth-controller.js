@@ -2,7 +2,10 @@
 var shortid = require('shortid');
 var Users = require('../models/user-model.js');
 
-module.exports.login = function(req,res){
+module.exports.login = async function(req,res){
+	if (req.signedCookies.userId) {
+		res.redirect('/');
+	} else 
 	res.render('./auth/login.pug');
 }
 module.exports.loginPost = async function(req,res){
