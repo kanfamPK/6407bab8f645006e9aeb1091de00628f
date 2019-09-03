@@ -1,7 +1,9 @@
 // var db = require('../db.js');
 var User = require('../models/user-model.js');
+var ObjectId = require('mongodb').ObjectID;
+
 module.exports.requireAuth = async function(req, res, next){
-	var user = await User.find({_id.($oid): req.signedCookies.userId});
+	var user = await User.find({_id: ObjectId(req.signedCookies.userId)});
 	if (!req.signedCookies.userId){
 		res.redirect('/auth/login');
 		return;
