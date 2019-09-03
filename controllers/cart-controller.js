@@ -36,12 +36,11 @@ module.exports.goToCartPage = async function(req,res,next){
     var itemsInCart = [];
     for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
         var item = (await Products.find({_id: i}) )[0];
+        console.log(item);
         itemsInCart.push(item);
-        console.log('asd');
     }
     // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
     var itemCount = 0;
-    for (var i in itemsInCart) console.log(i);
     res.render('../views/cart/cart.pug',{
         cart: itemsInCart,
         itemCount: itemCount
