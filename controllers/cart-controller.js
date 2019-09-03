@@ -41,8 +41,7 @@ module.exports.goToCartPage = async function(req,res,next){
     }
     // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
     var itemCount = 0;
-    console.log(items);
-    console.log(currentCart);
+    for (var i in itemsInCart) console.log(i);
     res.render('../views/cart/cart.pug',{
         cart: itemsInCart,
         itemCount: itemCount
