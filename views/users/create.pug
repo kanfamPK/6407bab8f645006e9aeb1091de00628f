@@ -11,4 +11,12 @@ block content
 		input.form-control(name="phone",type="text", value=inputValues ? inputValues.phone : "")
 		if phoneErr
 			.alert.alert-danger= phoneErr
+		label Email
+		input.form-control(name="email",type="text", value=inputValues ? inputValues.email : "")
+		if emailErr
+			.alert.alert-danger= emailErr
+		label Password
+		input.form-control(name="password",type="password", value=inputValues ? inputValues.password : "")
+		if passwordErr
+			.alert.alert-danger= passwordErr
 		button.btn.btn-primary.mt-3 Create

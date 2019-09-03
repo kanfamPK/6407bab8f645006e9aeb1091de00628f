@@ -34,7 +34,7 @@ module.exports.getId = async function(req,res){
 
 module.exports.createPost = function(req,res){
 	if (res.locals.passedValidate === true){
-		var user = new userList({name: req.body.name ,phone: req.body.phone, email: 'asdasd@', password: '123123'});
+		var user = new userList({name: req.body.name ,phone: req.body.phone, email: req.body.email, password: req.body.password});
 		user.save();
 	 	// db.get('usersList').push(req.body).write();
 	}
