@@ -1,23 +1,24 @@
 extends ../layouts/common.pug
 
 block content
-	h1 Users
-	a.btn.btn-primary(href="/users/create") New
+	.container.pt-5.fillSpace
+		h1 Users
+		a.btn.btn-primary(href="/users/create") New
 
-	.d-flex.align-items-center
-		form.ml-auto(action="/users/search", method="GET")  
-			input(type="text", name="q", placeholder="..........",value= inputValue)
-			button Search
+		.d-flex.align-items-center
+			form.ml-auto(action="/users/search", method="GET")  
+				input(type="text", name="q", placeholder="..........",value= inputValue)
+				button Search
 
-	table.table
-		tr
-			th Name
-			th Phone
-			th Actions
-
-		each i in usersList
+		table.table
 			tr
-				td= i.name
-				td= i.phone 
-				td
-					a.btn.btn-info(href="/users/" + i.id) View 
+				th Name
+				th Phone
+				th Actions
+
+			each i in usersList
+				tr
+					td= i.name
+					td= i.phone 
+					td
+						a.btn.btn-info(href="/users/" + i.id) View 

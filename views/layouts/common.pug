@@ -9,31 +9,49 @@ html
         //- vì custom.css là static file, ở file index.js chính đã khai báo các file static ở thư mục public nên đường
         //- dẫn là /custom.css
     body
-        nav.navbar.navbar-expand-lg.navbar-light#main-navbar
-          a.navbar-brand(href='/') Khan.Tokyo
-          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-          #navbarNav.collapse.navbar-collapse
-            ul.navbar-nav
-              li.nav-item
-                a.nav-link(href='/') Home
-              li.nav-item
-                a.nav-link(href='/users') Users
-              li.nav-item
-                a.nav-link(href='/products') Products
-              li.nav-item
-                a.nav-link(href='/cart') 
-                  i.fas.fa-shopping-cart.mr-2 
-                    span Cart                 
-          if user
-            .ml-auto
-              i.fas.fa-user-circle.userIcon.fa-2x.mr-2
-                d-flex.flex-column.userIconDropdown
-                    p.m-0 #{user.email}
-                    p.m-0 #{user.phone}
-                    a(href='/signout').btn.btn-primary Sign out
-              span= user.name
+      nav.navbar.navbar-expand-lg.navbar-light#main-navbar
+        a.navbar-brand(href='/') Khan's shop
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/users') Users
+            li.nav-item
+              a.nav-link(href='/products') Products
+            li.nav-item
+              a.nav-link(href='/cart') 
+                i.fas.fa-shopping-cart.mr-2 
+                  span Cart                 
+        if user
+          .ml-auto
+            i.fas.fa-user-circle.userIcon.fa-2x.mr-2
+              d-flex.flex-column.userIconDropdown
+                  p.m-0 #{user.email}
+                  p.m-0 #{user.phone}
+                  a(href='/signout').btn.btn-primary Sign out
+            span= user.name
           
 
-        .container.pt-5
+      .container.pt-5
             block content
+      
+      .container.pageFooter.mt-5
+        .d-flex.justify-content-around
+          .col-md-4
+            p.mb-3.text-primary Hỗ trợ khách hàng
+            p Hotline đặt hàng: 1800-6963 (Miễn phí , 8-21h kể cả T7, CN)
+            p Hotline chăm sóc khách hàng: 1900-6035
+            p Các câu hỏi thường gặp
+            p Gửi yêu cầu hỗ trợ
+            p Hướng dẫn đặt hàng
+            p Phương thức vận chuyển
+          .col-md-4 
+            p.mb-3.text-primary Về Khan's Shop
+            p Giới thiệu Tiki
+            p Chính sách giải quyết khiếu nại
+            p Điều khoản sử dụng
+          .col-md-4 Kết nối với chúng tôi
+            
