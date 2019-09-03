@@ -30,20 +30,40 @@ module.exports.addToCart = async function(req,res,next){
 }
 
 module.exports.goToCartPage = async function(req,res,next){
-    var sessionId = req.signedCookies.sessionId;
-    var items = await Products.find();
-    var currentCart = await Session.find({ sessionId: sessionId});
-    var itemsInCart = [];
-    if (currentCart != undefined){
-        for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
-            var item = (await Products.find({_id: i}) )[0];
-            itemsInCart.push(item);
+    try {
+        var sessionId = req.signedCookies.sessionId;
+        var items = await Products.find();
+        var currentCart = await Session.find({ sessionId: sessionId});
+        var itemsInCart = [];
+        if (currentCart != undefined){
+            for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
+                var item = (await Products.find({_id: i}) )[0];
+                itemsInCart.push(item);
+            }
         }
+        // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
+        var itemCount = 0;
+        res.render('../views/cart/cart.pug',{
+            cart: itemsInCart,
+            itemCount: itemCount
+        });
+    } catch(err){
+        next();
     }
-    // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
-    var itemCount = 0;
-    res.render('../views/cart/cart.pug',{
-        cart: itemsInCart,
-        itemCount: itemCount
-    });
+    // var sessionId = req.signedCookies.sessionId;
+    // var items = await Products.find();
+    // var currentCart = await Session.find({ sessionId: sessionId});
+    // var itemsInCart = [];
+    // if (currentCart != undefined){
+    //     for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
+    //         var item = (await Products.find({_id: i}) )[0];
+    //         itemsInCart.push(item);
+    //     }
+    // }
+    // // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
+    // var itemCount = 0;
+    // res.render('../views/cart/cart.pug',{
+    //     cart: itemsInCart,
+    //     itemCount: itemCount
+    // });
 }
