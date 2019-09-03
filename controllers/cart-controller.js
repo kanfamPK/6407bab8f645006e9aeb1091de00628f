@@ -34,7 +34,7 @@ module.exports.goToCartPage = async function(req,res,next){
     var items = await Products.find();
     var currentCart = await Session.find({ sessionId: sessionId});
     var itemsInCart = [];
-    if (currentCart){
+    if (currentCart != undefined){
         for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
             var item = (await Products.find({_id: i}) )[0];
             itemsInCart.push(item);
