@@ -36,9 +36,9 @@ module.exports.goToCartPage = async function(req,res,next){
     var itemsInCart = [];
     for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
         var item = (await Products.find({_id: i}) )[0];
-        console.log(currentCart[0].cart[0] +" currentCart[0].cart[0]");
-        console.log(i +" i");
-        console.log(item + " Item");
+        // console.log(currentCart[0].cart[0] +" currentCart[0].cart[0]");
+        // console.log(i +" i");
+        // console.log(item + " Item");
         itemsInCart.push(item);
     }
     // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
