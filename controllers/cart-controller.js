@@ -34,12 +34,11 @@ module.exports.goToCartPage = async function(req,res,next){
     var items = await Products.find();
     var currentCart = await Session.find({ sessionId: sessionId});
     var itemsInCart = [];
-    for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
-        var item = (await Products.find({_id: i}) )[0];
-        // console.log(currentCart[0].cart[0] +" currentCart[0].cart[0]");
-        // console.log(i +" i");
-        // console.log(item + " Item");
-        itemsInCart.push(item);
+    if (currentCart){
+        for (var i in currentCart[0].cart[0]) { // currentCart[0].cart[0] là 1 object có các key là item id
+            var item = (await Products.find({_id: i}) )[0];
+            itemsInCart.push(item);
+        }
     }
     // var cart = db.get('sessions').find({id: sessionId}).get('cart').value();
     var itemCount = 0;
