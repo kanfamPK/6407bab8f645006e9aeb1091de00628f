@@ -48,7 +48,7 @@ module.exports.goToCartPage = async function(req,res,next){
             itemCount: itemCount
         });
     } catch(err){
-        next();
+        
     }
     // var sessionId = req.signedCookies.sessionId;
     // var items = await Products.find();
