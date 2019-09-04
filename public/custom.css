@@ -34,7 +34,10 @@ h1 {
 	margin: 0;
 }
 .fillSpace {
-	height: 50%;
+	height: 60%;
+}
+.pageFooterContainer {
+	background: #232f3e;
 }
 /* .pageFooter {
 	bottom:0;

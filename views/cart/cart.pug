@@ -1,21 +1,22 @@
 extends ../layouts/common.pug
 
 block content
-    if (itemCount ==0)
-        p.cart-p No product in cart
-    if (itemCount == 1)
-        p.pb-4.mb-5.border-bottom.border-dark.cart-p Your cart has #{itemCount} item
-    if (itemCount >2)
-        p.pb-4.mb-5.border-bottom.border-dark.cart-p Your cart has #{itemCount} items
-    .row
-        each i in cart
-            .col-sm-12.col-md-12.col-lg-12.ml-6.mb-5.p-2
-                .d-flex.border.border-primary
-                    .float-left
-                        img(src='https://loremflickr.com/160/160/product?random='+(Math.random()*10), alt='...')
-                    d-flex.flex-column.flex-grow-4.mr-4.ml-3
-                        h5.card-title= i.name
-                        p.card-text= i.description
-                    d-flex.flex-column.flex-grow-5.ml-auto
-                        p Price
-                        p 196.800Đ
+    .container.pt-5.fillSpace
+        if (itemCount ==0)
+            p.cart-p No product in cart
+        if (itemCount == 1)
+            p.pb-4.mb-5.border-bottom.border-dark.cart-p Your cart has #{itemCount} item
+        if (itemCount >2)
+            p.pb-4.mb-5.border-bottom.border-dark.cart-p Your cart has #{itemCount} items
+        .row
+            each i in cart
+                .col-sm-12.col-md-12.col-lg-12.ml-6.mb-5.p-2
+                    .d-flex.border.border-primary
+                        .float-left
+                            img(src='https://loremflickr.com/160/160/product?random='+(Math.random()*10), alt='...')
+                        d-flex.flex-column.flex-grow-4.mr-4.ml-3
+                            h5.card-title= i.name
+                            p.card-text= i.description
+                        d-flex.flex-column.flex-grow-5.ml-auto
+                            p Price
+                            p 196.800Đ
